@@ -1,0 +1,11 @@
+/dist-newstyle/
+/.build/
+/result
+/result-*
+/cabal.project.local
+/cabal.project.local~
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+/*.jsonl

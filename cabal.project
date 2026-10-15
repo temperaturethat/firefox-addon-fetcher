@@ -1,0 +1,4 @@
+packages: .
+tests: True
+-- Nix supplies compiler/dependency versions; do not silently update Hackage.
+active-repositories: :none
