@@ -18,7 +18,9 @@ is enabled by cabal.project. Cabal checks/source distributions require no live A
 ## Coverage
 
 Regression scenarios cover metadata parsing, permissions/licenses, GUID/slug
-conflicts, user-range splitting, pagination, caps, count drift, selected-request
+conflicts, user-range splitting, live count/page-hint drift, shrinking/empty/short
+pages, late cap repartitioning, overlap deduplication, metadata updates, open upper
+ranges and retention of observed records across splits, selected-request
 abort behavior, JSONL Unicode/newlines, typed HTTP errors, retry budgets and
 Retry-After, and atomic-file cleanup/preservation. Integration uses loopback HTTP
 and an actual JSONL destination. Retry sleeps/clocks are injected for deterministic

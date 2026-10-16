@@ -24,6 +24,15 @@ Nix fixed-output fetch. This tool does not fetch the archives. AMO response
 schemas and this output schema differ deliberately; `FromJSON Addon` reads AMO,
 while `ToJSON Addon` emits normalized metadata. They are not a round-trip codec.
 
+## Discovery observations
+
+Discovery keeps the last observed complete record for each GUID during this run;
+it does not compare version strings to infer chronological ordering. Records can
+be observed more than once as pages or user-count ranges change. There is no
+point-in-time completeness guarantee, and an observed record can outlive its AMO
+listing. Slug collisions across the final GUID records still abort. Selected mode
+continues to reject conflicting metadata for the same GUID.
+
 ## Nix consumer boundary
 
 Read lines and discard empty split elements caused by the final newline before

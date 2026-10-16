@@ -19,7 +19,7 @@ the optional nonnegative integer changes that minimum. Themes, dictionaries and
 language packs are excluded. Selected slugs accept ASCII letters, digits, `-`, `_`.
 
 Output paths are relative to your current directory. Parent directories must
-exist. Each successful run replaces the output with a **fresh snapshot**; no old
+exist. Each successful run replaces the output with a **fresh catalogue**; no old
 catalogue is read or merged. Errors and progress go to stderr. Failures return a
 nonzero exit status and do not replace an existing output. Empty snapshots are
 refused. Run only one writer per output file.
@@ -54,9 +54,11 @@ and by the Nix package build. The build prints the generated HTML location.
 ## Limits
 
 Discovery partitions user-count ranges around AMO's current 30,000-result cap.
-It aborts if an indivisible bucket remains capped, pages change inconsistently,
-or metadata conflicts. AMO is not a transactional snapshot; these checks cannot
-prove an exhaustive point-in-time export. Full default live discovery has not
+It tolerates changing counts, page lengths and overlapping GUIDs, keeping the last
+observed record per GUID. Growing capped ranges are repartitioned; indivisible
+capped buckets, invalid responses, HTTP failures and final slug collisions still
+abort. The catalogue is best-effort, not a point-in-time snapshot: moving entries
+may be missed and removed entries may remain. Full default live discovery has not
 yet been verified. A bounded live three-page run previously produced 111 records.
 
 Retries allow four attempts, with 1/2/4-second fallback waits and longer valid
